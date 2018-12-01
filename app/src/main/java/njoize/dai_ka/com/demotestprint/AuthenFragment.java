@@ -2,8 +2,10 @@ package njoize.dai_ka.com.demotestprint;
 
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,14 +17,15 @@ import android.widget.EditText;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.time.Instant;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class AuthenFragment extends Fragment {
+
 
 
     @Override
@@ -33,11 +36,12 @@ public class AuthenFragment extends Fragment {
         loginController();
 
 
-    } // Main Method
+    }   // Main Method
 
     private void loginController() {
         Button button = getView().findViewById(R.id.btnLogin);
         button.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
 
@@ -48,10 +52,10 @@ public class AuthenFragment extends Fragment {
                 String passwordString = passwordEditText.getText().toString().trim();
                 MyAlertDialog myAlertDialog = new MyAlertDialog(getActivity());
 
+//                Check Space
                 if (userString.isEmpty() || passwordString.isEmpty()) {
 //                    Have Space
                     myAlertDialog.normalDialog("Have Space", "Please Fill Every Blank");
-
                 } else {
 //                    No Space
 
@@ -61,42 +65,73 @@ public class AuthenFragment extends Fragment {
                         MyConstant myConstant = new MyConstant();
 
                         getUserWhereName.execute(userString, myConstant.getUrlGetUserWhereName());
-                        String resultJSon = getUserWhereName.get();
-                        Log.d("25novV1", "resultJSon ==> " + resultJSon);
+                        String resultJSoN = getUserWhereName.get();
+                        Log.d("25novV1", "resultJSoN ==> " + resultJSoN);
 
-//                        Check User and Pass
-                        if (resultJSon.equals("null")) {
+//                      Check User and Pass
+                        if (resultJSoN.equals("null")) {
                             myAlertDialog.normalDialog("User False", "No " + userString + " in my Database");
                         } else {
 
-                            JSONArray jsonArray = new JSONArray(resultJSon);
+                            JSONArray jsonArray = new JSONArray(resultJSoN);
                             JSONObject jsonObject = jsonArray.getJSONObject(0);
 
                             String truePassword = convertMD5toString(jsonObject.getString("pass"));
-                            Log.d("25ncovV1", "truePassword ==> " + truePassword);
+                            Log.d("25novV1", "truePassword ==> " + truePassword);
 
-                            if (passwordString.equals(truePassword)) {
+                            if (checkPassword(passwordString, jsonObject.getString("pass"))) {
                                 Intent intent = new Intent(getActivity(), ServiceActivity.class);
-                                intent.putExtra("Login", resultJSon);
+                                intent.putExtra("Login", resultJSoN);
                                 startActivity(intent);
                                 getActivity().finish();
                             } else {
-                                myAlertDialog.normalDialog( "Password False", "Please Try Agains Password False");
+                                myAlertDialog.normalDialog("Password False", "Please Try Agains Password False" );
                             }
 
+                        }   // if
 
-                        } // if
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-
-                } // if
-
-
+                }   // if
             }
         });
+
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    private boolean checkPassword(String passwordString, String md5TruePasswordString) {
+
+        boolean result = false;
+        String tag = "1decV1";
+        Log.d(tag, "md5TruePassword ==> " + md5TruePasswordString);
+
+        try {
+
+            MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+            byte[] bytes = messageDigest.digest(passwordString.getBytes(StandardCharsets.UTF_8));
+
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : bytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            Log.d(tag, "md5UserPassword ==> " + stringBuilder);
+
+            if (md5TruePasswordString.equals(stringBuilder.toString().trim())) {
+                result = true;
+                Log.d(tag, "Result True");
+            }
+
+            Log.d(tag, "result ==> " + result);
+            return result;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return result;
+        }
 
     }
 
@@ -116,19 +151,19 @@ public class AuthenFragment extends Fragment {
                 while (hexString.length() < 2) {
                     hexString = "0" + hexString;
                     stringBuffer.append(hexString);
-                } // While
-
-            } // for
+                }   // while
+            }   // for
             resultString = stringBuffer.toString();
             return resultString;
+
 
         } catch (Exception e) {
             e.printStackTrace();
             return resultString;
         }
 
-//        return resultString;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
