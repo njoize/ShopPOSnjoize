@@ -20,10 +20,21 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (i) {
             case 0:
-                break;
+                BillFragment billFragment = new BillFragment();
+                return billFragment;
+            case 1:
+                DeskFragment deskFragment = new DeskFragment();
+                return deskFragment;
+            case 2:
+                FoodFragment foodFragment = new FoodFragment();
+                return foodFragment;
+            case 3:
+                NotificationFragment notificationFragment = new NotificationFragment();
+                return notificationFragment;
+                default:
+                    return null;
         }
 
-        return null;
     }
 
     @Override
