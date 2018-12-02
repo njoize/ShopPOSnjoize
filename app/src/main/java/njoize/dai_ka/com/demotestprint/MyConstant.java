@@ -7,6 +7,13 @@ public class MyConstant {
 
     private String nameShopString = "Name Shop";
 
+    private String[] titleTabStrings = new String[]{"Bill", "Desk", "Food", "Noti"};
+
+
+    public String[] getTitleTabStrings() {
+        return titleTabStrings;
+    }
+
     public String getNameShopString() {
         return nameShopString;
     }
