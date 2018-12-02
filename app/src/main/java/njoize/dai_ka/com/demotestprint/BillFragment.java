@@ -50,12 +50,14 @@ public class BillFragment extends Fragment {
                 LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        ArrayList<String> zoneStringArrayList = new ArrayList<>();
-        ArrayList<String> deskStringArrayList = new ArrayList<>();
+        final ArrayList<String> zoneStringArrayList = new ArrayList<>();
+        final ArrayList<String> deskStringArrayList = new ArrayList<>();
         ArrayList<String> detail1StringArrayList = new ArrayList<>();
         ArrayList<String> detail2StringArrayList = new ArrayList<>();
         ArrayList<String> detail3StringArrayList = new ArrayList<>();
         final ArrayList<String> idBillStringArrayList = new ArrayList<>();
+
+        final ArrayList<String> timeStringArrayList = new ArrayList<>();
 
         try {
 
@@ -74,6 +76,7 @@ public class BillFragment extends Fragment {
                 detail2StringArrayList.add(jsonObject.getString("adate"));
                 detail3StringArrayList.add(jsonObject.getString("price"));
                 idBillStringArrayList.add(jsonObject.getString("id"));
+                timeStringArrayList.add(jsonObject.getString("date"));
 
             } // for
 
@@ -87,7 +90,10 @@ public class BillFragment extends Fragment {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.contentServiceFragment,
-                                    BillDetailFragment.billDetailInstance(idBillStringArrayList.get(positions)))
+                                    BillDetailFragment.billDetailInstance(idBillStringArrayList.get(positions),
+                                            timeStringArrayList.get(positions),
+                                            zoneStringArrayList.get(positions),
+                                            deskStringArrayList.get(positions)))
                             .addToBackStack(null)
                             .commit();
 

@@ -6,26 +6,49 @@
     tools:context=".BillDetailFragment">
 
     <!--Top-->
+    <RelativeLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/txtLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title Left"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtRight"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title Right"
+            android:textSize="@dimen/h2"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
 
     <!--Middle-->
     <android.support.v7.widget.RecyclerView
-        android:layout_above="@+id/txtTotal"
         android:id="@+id/recyclerViewBillDetail"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/txtTotal"
+        android:layout_below="@+id/layoutTop" />
 
     <!--Base-->
     <TextView
-        android:layout_alignParentRight="true"
-        android:textStyle="bold"
-        android:textSize="@dimen/h1"
-        android:layout_alignParentBottom="true"
         android:id="@+id/txtTotal"
-        android:text="Total = 1234"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="Total = 1234"
+        android:textSize="@dimen/h1"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
