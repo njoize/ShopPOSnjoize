@@ -30,7 +30,27 @@ public class ServiceFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-//        Initial View
+//        Create TabLayout
+        createTabLayout();
+
+//        Create ViewPager
+        createViewPager();
+
+
+
+
+    } // Main Medthod
+
+    private void createViewPager() {
+        viewPager = getView().findViewById(R.id.viewPager);
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(getActivity().getSupportFragmentManager(),
+                tabLayout.getTabCount());
+        viewPager.setAdapter(myPagerAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+    }
+
+    private void createTabLayout() {
         tabLayout = getView().findViewById(R.id.tabLayout);
         String[] strings = myConstant.getTitleTabStrings();
         for (String myString: strings) {
@@ -38,9 +58,24 @@ public class ServiceFragment extends Fragment {
         }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
-    } // Main Medthod
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
