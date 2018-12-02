@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -85,6 +86,16 @@ public class BillDetailFragment extends Fragment {
             BillDetailAdapter billDetailAdapter = new BillDetailAdapter(getActivity(), nameStringArrayList,
                     detailStringArrayList, amountStringArrayList, billStringArrayList, priceStringArrayList);
             recyclerView.setAdapter(billDetailAdapter);
+
+
+            int total = 0;
+            for (String s : priceStringArrayList) {
+                total = total + Integer.parseInt(s.trim());
+            }
+
+            TextView textView = getView().findViewById(R.id.txtTotal);
+            textView.setText("Total = " + Integer.toString(total) + "THB.");
+
 
         } catch (Exception e) {
             //e.printStackTrace();
