@@ -15,6 +15,12 @@ public class MyConstant {
 
     private String urlTestReadAllData = "https://jsonplaceholder.typicode.com/users";
 
+    private String urlBillWhereOrder = "http://www.brainwakecafe.com/android/getAllOrder.php";
+
+    public String getUrlBillWhereOrder() {
+        return urlBillWhereOrder;
+    }
+
     public String getUrlTestReadAllData() {
         return urlTestReadAllData;
     }
