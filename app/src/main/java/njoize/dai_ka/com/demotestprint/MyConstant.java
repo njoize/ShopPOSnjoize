@@ -17,6 +17,12 @@ public class MyConstant {
 
     private String urlBillWhereOrder = "http://www.brainwakecafe.com/android/getAllOrder.php";
 
+    private String urlBillDetailWhereOID = "http://www.brainwakecafe.com/android/getAllOrderDetail.php";
+
+    public String getUrlBillDetailWhereOID() {
+        return urlBillDetailWhereOID;
+    }
+
     public String getUrlBillWhereOrder() {
         return urlBillWhereOrder;
     }

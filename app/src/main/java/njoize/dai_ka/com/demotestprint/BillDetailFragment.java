@@ -17,6 +17,7 @@ public class BillDetailFragment extends Fragment {
 
     private String idBillString;
     private String tag = "2decV2";
+    private MyConstant myConstant = new MyConstant();
 
 
     public BillDetailFragment() {
@@ -36,6 +37,33 @@ public class BillDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+//        Get OID
+        getOID();
+
+//        Create Detail
+        createDetail();
+
+    } // Main Method
+
+    private void createDetail() {
+
+
+
+        try {
+
+            GetDtailBillWhereID getDtailBillWhereID = new GetDtailBillWhereID(getActivity());
+            getDtailBillWhereID.execute(idBillString , myConstant.getUrlBillDetailWhereOID());
+            String jsonString = getDtailBillWhereID.get();
+            Log.d(tag, jsonString);
+
+        } catch (Exception e) {
+            //e.printStackTrace();
+            Log.d(tag, "e at createDetail ==> " + e.toString());
+        }
+
+    }
+
+    private void getOID() {
         idBillString = getArguments().getString("idBill");
         Log.d(tag, "idBill ==> " + idBillString);
     }
