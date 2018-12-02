@@ -20,20 +20,23 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<BillRecyclerVi
             detailLine2StringArrayList,
             detailLine3StringArrayList;
     private LayoutInflater layoutInflater;
+    private OnClickItem onClickItem;
 
-    public BillRecyclerViewAdapter(Context context,
-                                   ArrayList<String> zoneStringArrayList,
+    public BillRecyclerViewAdapter(Context context, ArrayList<String>
+            zoneStringArrayList,
                                    ArrayList<String> deskStringArrayList,
                                    ArrayList<String> detailLine1StringArrayList,
                                    ArrayList<String> detailLine2StringArrayList,
-                                   ArrayList<String> detailLine3StringArrayList) {
+                                   ArrayList<String> detailLine3StringArrayList,
+                                   OnClickItem onClickItem) {
         this.layoutInflater = LayoutInflater.from(context);
         this.zoneStringArrayList = zoneStringArrayList;
         this.deskStringArrayList = deskStringArrayList;
         this.detailLine1StringArrayList = detailLine1StringArrayList;
         this.detailLine2StringArrayList = detailLine2StringArrayList;
         this.detailLine3StringArrayList = detailLine3StringArrayList;
-    } // Constructor
+        this.onClickItem = onClickItem;
+    }
 
     @NonNull
     @Override
@@ -47,7 +50,7 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<BillRecyclerVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BillViewHolder billViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final BillViewHolder billViewHolder, int i) {
 
         String zoneString = zoneStringArrayList.get(i);
         String deskString = deskStringArrayList.get(i);
@@ -60,6 +63,13 @@ public class BillRecyclerViewAdapter extends RecyclerView.Adapter<BillRecyclerVi
         billViewHolder.detailline1TextView.setText(detailLine1String);
         billViewHolder.detailline2TextView.setText(detailLine2String);
         billViewHolder.detailline3TextView.setText(detailLine3String);
+
+        billViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickItem.onClickItem(v, billViewHolder.getAdapterPosition());
+            }
+        });
 
 
     }

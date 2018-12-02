@@ -55,7 +55,7 @@ public class ServiceFragment extends Fragment {
         String[] strings = myConstant.getTitleTabStrings();
         int[] iconInts = myConstant.getIconBillTitleInts();
         for (int i=0; i<strings.length; i+=1) {
-            tabLayout.addTab(tabLayout.newTab().setText(strings[1]).setIcon(iconInts[i]));
+            tabLayout.addTab(tabLayout.newTab().setText(strings[i]).setIcon(iconInts[i]));
         }
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
