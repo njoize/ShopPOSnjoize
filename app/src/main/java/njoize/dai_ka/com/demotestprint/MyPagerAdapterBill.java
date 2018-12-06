@@ -28,6 +28,9 @@ public class MyPagerAdapterBill extends FragmentStatePagerAdapter {
             case 2:
                 BillCancleFragment billCancleFragment = new BillCancleFragment();
                 return billCancleFragment;
+            case 3:
+                BillOnlineFragment billOnlineFragment = new BillOnlineFragment();
+                return billOnlineFragment;
             default:
                 return null;
         }
