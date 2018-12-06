@@ -9,7 +9,7 @@ public class MyConstant {
 
     private String[] titleTabStrings = new String[]{"Bill", "Desk", "Food", "Noti"};
 
-    private String[] billTitleStrings = new String[]{"ยังไม่ชำระ", "สำเร็จ", "ยกเลิก", "สั่งซื้อแบบออนไลน์"};
+    private String[] billTitleStrings = new String[]{"ยังไม่ชำระ", "สำเร็จ", "ยกเลิก"};
 
     private int[] iconBillTitleInts = new int[]{R.drawable.ic_action_bill, R.drawable.ic_action_desk, R.drawable.ic_action_food, R.drawable.ic_action_noti};
 

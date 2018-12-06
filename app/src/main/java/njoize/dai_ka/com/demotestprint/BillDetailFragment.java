@@ -69,7 +69,7 @@ public class BillDetailFragment extends Fragment {
         TextView rightTextView = getView().findViewById(R.id.txtRight);
 
         leftTextView.setText(timeString + " " + "Other");
-        rightTextView.setText("Zone " + zoneString + " " + "Desk " + deskString);
+        rightTextView.setText(zoneString + " " + "โต๊ะ " + deskString);
 
 
     }
@@ -97,11 +97,12 @@ public class BillDetailFragment extends Fragment {
             JSONArray jsonArray = new JSONArray(jsonString);
             for (int i = 0; i < jsonArray.length(); i += 1) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                nameStringArrayList.add(jsonObject.getString("name"));
+                nameStringArrayList.add(jsonObject.getString("pname"));
                 detailStringArrayList.add(jsonObject.getString("des"));
-                amountStringArrayList.add(jsonObject.getString("num"));
+                amountStringArrayList.add("ราคา " + jsonObject.getString("price") + " บาท จำนวน " + jsonObject.getString("num"));
                 billStringArrayList.add(jsonObject.getString("setpr"));
-                priceStringArrayList.add(jsonObject.getString("price"));
+                priceStringArrayList.add(jsonObject.getString("sumPrice"));
+//                priceStringArrayList.add(jsonObject.getString("price") + ".-");
             }
 
             BillDetailAdapter billDetailAdapter = new BillDetailAdapter(getActivity(), nameStringArrayList,
@@ -115,7 +116,7 @@ public class BillDetailFragment extends Fragment {
             }
 
             TextView textView = getView().findViewById(R.id.txtTotal);
-            textView.setText("Total = " + Integer.toString(total) + "THB.");
+            textView.setText("ยอดสุทธิ " + Integer.toString(total) + " บาท");
 
 
         } catch (Exception e) {

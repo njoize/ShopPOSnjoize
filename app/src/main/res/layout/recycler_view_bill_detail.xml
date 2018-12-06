@@ -19,6 +19,7 @@
             android:textSize="@dimen/h2" />
 
         <TextView
+            android:visibility="gone"
             android:textStyle="italic"
             android:id="@+id/txtDetail"
             android:layout_width="wrap_content"
@@ -34,6 +35,7 @@
             android:textSize="@dimen/h2" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/txtBill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

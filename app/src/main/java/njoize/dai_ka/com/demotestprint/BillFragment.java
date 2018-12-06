@@ -70,11 +70,12 @@ public class BillFragment extends Fragment {
             for (int i = 0; i < jsonArray.length(); i += 1) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                zoneStringArrayList.add("Zone " + jsonObject.getString("tgroup"));
-                deskStringArrayList.add(jsonObject.getString("type"));
-                detail1StringArrayList.add(jsonObject.getString("aby"));
-                detail2StringArrayList.add(jsonObject.getString("adate"));
-                detail3StringArrayList.add(jsonObject.getString("price"));
+//                zoneStringArrayList.add("Zone " + jsonObject.getString("tzname"));
+                zoneStringArrayList.add(jsonObject.getString("tzname"));
+                deskStringArrayList.add(jsonObject.getString("tname"));
+                detail1StringArrayList.add(jsonObject.getString("TotalList") + " รายการ " + jsonObject.getString("TotalPrice") + " บาท");
+                detail2StringArrayList.add(jsonObject.getString("date") + " ลูกค้า " + jsonObject.getString("cnum") + " คน " + jsonObject.getString("type"));
+                detail3StringArrayList.add("โดย " + jsonObject.getString("name"));
                 idBillStringArrayList.add(jsonObject.getString("id"));
                 timeStringArrayList.add(jsonObject.getString("date"));
 
