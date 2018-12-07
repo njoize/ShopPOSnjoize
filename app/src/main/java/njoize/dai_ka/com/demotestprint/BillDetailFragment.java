@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class BillDetailFragment extends Fragment {
 
-    private String idBillString, timeString, zoneString, deskString;
+    private String idBillString, timeString, cnumString, typeString, nameString, zoneString, deskString;
     private String tag = "2decV2";
     private MyConstant myConstant = new MyConstant();
 
@@ -34,6 +34,9 @@ public class BillDetailFragment extends Fragment {
 
     public static BillDetailFragment billDetailInstance(String idString,
                                                         String timeString,
+                                                        String cnumString,
+                                                        String typeString,
+                                                        String nameString,
                                                         String zoneString,
                                                         String deskString) {
 
@@ -41,6 +44,9 @@ public class BillDetailFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("idBill", idString);
         bundle.putString("Time", timeString);
+        bundle.putString("cnum", cnumString);
+        bundle.putString("type", typeString);
+        bundle.putString("name", nameString);
         bundle.putString("Zone", zoneString);
         bundle.putString("Desk", deskString);
         billDetailFragment.setArguments(bundle);
@@ -68,7 +74,7 @@ public class BillDetailFragment extends Fragment {
         TextView leftTextView = getView().findViewById(R.id.txtLeft);
         TextView rightTextView = getView().findViewById(R.id.txtRight);
 
-        leftTextView.setText(timeString + " " + "Other");
+        leftTextView.setText(timeString + " ลูกค้า " + cnumString + " คน " + typeString + " โดย " + nameString);
         rightTextView.setText(zoneString + " " + "โต๊ะ " + deskString);
 
 
@@ -129,6 +135,9 @@ public class BillDetailFragment extends Fragment {
     private void getOID() {
         idBillString = getArguments().getString("idBill");
         timeString = getArguments().getString("Time");
+        cnumString = getArguments().getString("cnum");
+        typeString = getArguments().getString("type");
+        nameString = getArguments().getString("name");
         zoneString = getArguments().getString("Zone");
         deskString = getArguments().getString("Desk");
         Log.d(tag, "idBill ==> " + idBillString);

@@ -37,7 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/txtTotal"
-        android:layout_below="@+id/layoutTop" />
+        android:layout_below="@+id/layoutTop"/>
+
+
 
     <!--Base-->
     <TextView
@@ -45,10 +47,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/buttonBottom"
         android:text="Total = 1234"
         android:textSize="@dimen/h1"
         android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/buttonBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:text="สั่งเพิ่ม/แก้ไข"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnSep"
+            android:text="แยกบิล"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btnPayment"
+            android:text="ชำระเงิน"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
 
 
 </RelativeLayout>

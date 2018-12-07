@@ -55,6 +55,9 @@ public class BillFinishFragment extends Fragment {
         ArrayList<String> detail3StringArrayList = new ArrayList<>();
         final ArrayList<String> idBillStringArrayList = new ArrayList<>();
 
+        final ArrayList<String> cnumStringArrayList = new ArrayList<>();
+        final ArrayList<String> typeStringArrayList = new ArrayList<>();
+        final ArrayList<String> nameStringArrayList = new ArrayList<>();
         final ArrayList<String> timeStringArrayList = new ArrayList<>();
 
         try {
@@ -76,6 +79,9 @@ public class BillFinishFragment extends Fragment {
                 detail3StringArrayList.add("โดย " + jsonObject.getString("name"));
                 idBillStringArrayList.add(jsonObject.getString("id"));
                 timeStringArrayList.add(jsonObject.getString("date"));
+                cnumStringArrayList.add(jsonObject.getString("cnum"));
+                typeStringArrayList.add(jsonObject.getString("type"));
+                nameStringArrayList.add(jsonObject.getString("name"));
 
             } // for
 
@@ -91,6 +97,9 @@ public class BillFinishFragment extends Fragment {
                             .replace(R.id.contentServiceFragment,
                                     BillDetailFragment.billDetailInstance(idBillStringArrayList.get(positions),
                                             timeStringArrayList.get(positions),
+                                            cnumStringArrayList.get(positions),
+                                            typeStringArrayList.get(positions),
+                                            nameStringArrayList.get(positions),
                                             zoneStringArrayList.get(positions),
                                             deskStringArrayList.get(positions)))
                             .addToBackStack(null)
