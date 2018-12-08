@@ -47,12 +47,12 @@ public class ServiceActivity extends AppCompatActivity {
         }
 
 //        Add Bill Fragment
-        if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.contentServiceFragment, new ServiceBillFragment())
-                    .commit();
-        }
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager()
+//                    .beginTransaction()
+//                    .add(R.id.contentServiceFragment, new ServiceBillFragment())
+//                    .commit();
+//        }
 
 
     } // Main Method

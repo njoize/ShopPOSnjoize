@@ -35,6 +35,16 @@ public class MyConstant {
         return urlBillDetailWhereOID;
     }
 
+    private String sharePreferFile = "userLogin";
+
+
+//    Getter
+
+
+    public String getSharePreferFile() {
+        return sharePreferFile;
+    }
+
     public String getUrlBillWhereOrder() {
         return urlBillWhereOrder;
     }

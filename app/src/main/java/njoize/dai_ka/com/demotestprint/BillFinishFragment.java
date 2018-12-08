@@ -85,29 +85,7 @@ public class BillFinishFragment extends Fragment {
 
             } // for
 
-            BillRecyclerViewAdapter billRecyclerViewAdapter = new BillRecyclerViewAdapter(getActivity(),
-                    zoneStringArrayList, deskStringArrayList, detail1StringArrayList,
-                    detail2StringArrayList, detail3StringArrayList, new OnClickItem() {
-                @Override
-                public void onClickItem(View view, int positions) {
-                    Log.d("6decV2", "You Click ==> " + positions);
 
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.contentServiceFragment,
-                                    BillDetailFragment.billDetailInstance(idBillStringArrayList.get(positions),
-                                            timeStringArrayList.get(positions),
-                                            cnumStringArrayList.get(positions),
-                                            typeStringArrayList.get(positions),
-                                            nameStringArrayList.get(positions),
-                                            zoneStringArrayList.get(positions),
-                                            deskStringArrayList.get(positions)))
-                            .addToBackStack(null)
-                            .commit();
-
-                }
-            });
-            recyclerView.setAdapter(billRecyclerViewAdapter);
 
 
         } catch (Exception e) {

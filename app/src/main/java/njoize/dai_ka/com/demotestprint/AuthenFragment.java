@@ -1,7 +1,9 @@
 package njoize.dai_ka.com.demotestprint;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import org.json.JSONArray;
@@ -37,6 +40,26 @@ public class AuthenFragment extends Fragment {
 
 
     }   // Main Method
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        MyConstant myConstant = new MyConstant();
+
+        SharedPreferences sharedPreferences = getActivity()
+                .getSharedPreferences(myConstant.getSharePreferFile(), Context.MODE_PRIVATE);
+        boolean b = sharedPreferences.getBoolean("Remember", false);
+        String jsonString = sharedPreferences.getString("JSON", "");
+
+        if (b && (jsonString.length() != 0)) {
+            Intent intent = new Intent(getActivity(), ServiceActivity.class);
+            intent.putExtra("Login", jsonString);
+            startActivity(intent);
+            getActivity().finish();
+        }
+
+    }
 
     private void loginController() {
         Button button = getView().findViewById(R.id.btnLogin);
@@ -80,10 +103,27 @@ public class AuthenFragment extends Fragment {
                             Log.d("25novV1", "truePassword ==> " + truePassword);
 
                             if (checkPassword(passwordString, jsonObject.getString("pass"))) {
+
+                                CheckBox checkBox = getView().findViewById(R.id.chbRememberMe);
+
+
+                                SharedPreferences sharedPreferences = getActivity()
+                                        .getSharedPreferences(myConstant.getSharePreferFile(), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("User", userString);
+                                editor.putBoolean("Remember", checkBox.isChecked());
+                                editor.putString("JSON", resultJSoN);
+
+                                editor.commit();
+
+
+
                                 Intent intent = new Intent(getActivity(), ServiceActivity.class);
                                 intent.putExtra("Login", resultJSoN);
                                 startActivity(intent);
                                 getActivity().finish();
+
+
                             } else {
                                 myAlertDialog.normalDialog("Password False", "Please Try Agains Password False" );
                             }
