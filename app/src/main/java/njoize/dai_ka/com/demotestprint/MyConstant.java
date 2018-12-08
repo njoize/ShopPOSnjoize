@@ -37,9 +37,15 @@ public class MyConstant {
 
     private String sharePreferFile = "userLogin";
 
+    private String urlReadAllDesk = "http://www.brainwakecafe.com/android/getAllDesk.php";
+
 
 //    Getter
 
+
+    public String getUrlReadAllDesk() {
+        return urlReadAllDesk;
+    }
 
     public String getSharePreferFile() {
         return sharePreferFile;

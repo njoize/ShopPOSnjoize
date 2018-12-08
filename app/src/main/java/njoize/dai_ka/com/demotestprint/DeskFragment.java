@@ -5,10 +5,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 
 /**
@@ -40,14 +44,52 @@ public class DeskFragment extends Fragment {
         initialView();
 
 //      Draw Desk
-        drawDesk(1,1,4,2);
-
+        drawDesk();
 
 
     } // Main Method
 
+    private void drawDesk() {
 
-    private void drawDesk(int startX, int startY, int endX, int endY) {
+        String tag = "8decV2";
+
+        try {
+
+            MyConstant myConstant = new MyConstant();
+            GetAllData getAllData = new GetAllData(getActivity());
+            getAllData.execute(myConstant.getUrlReadAllDesk());
+            String jsonString = getAllData.get();
+            Log.d("8decV2", "jsonString ==> " + jsonString);
+
+            JSONArray jsonArray = new JSONArray(jsonString);
+            for (int i = 0; i < jsonArray.length(); i += 1) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String startDesk = jsonObject.getString("tbstart");
+                String endDesk = jsonObject.getString("tbend");
+                Log.d(tag, "startDesk ==> " + startDesk);
+                Log.d(tag, "endDesk ==> " + endDesk);
+                convasDesk(startDesk, endDesk);
+
+            } // for
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void convasDesk(String startDesk, String endDesk) {
+
+        String[] startStrings = startDesk.split("-");
+        String[] endStrings = endDesk.split("-");
+
+
+        int startX = Integer.parseInt(startStrings[0].trim());
+        int startY = Integer.parseInt(startStrings[1].trim());
+        int endX = Integer.parseInt(endStrings[0].trim());
+        int endY = Integer.parseInt(endStrings[1].trim());
 
         for (int i = startX; i <= endX; i += 1) {
 
