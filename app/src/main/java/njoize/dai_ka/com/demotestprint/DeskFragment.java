@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import org.json.JSONArray;
@@ -21,7 +22,7 @@ import org.json.JSONObject;
 public class DeskFragment extends Fragment {
 
     //    Explicit
-    private ImageView[][] imageViews = new ImageView[5][10];
+    private ImageButton[][] imageViews = new ImageButton[5][10];
     private int[][] ints = new int[][]{
             {R.id.imv0_0, R.id.imv0_1, R.id.imv0_2, R.id.imv0_3, R.id.imv0_4, R.id.imv0_5, R.id.imv0_6, R.id.imv0_7, R.id.imv0_8, R.id.imv0_9},
             {R.id.imv1_0, R.id.imv1_1, R.id.imv1_2, R.id.imv1_3, R.id.imv1_4, R.id.imv1_5, R.id.imv1_6, R.id.imv1_7, R.id.imv1_8, R.id.imv1_9},
@@ -105,6 +106,8 @@ public class DeskFragment extends Fragment {
 
     private void addRed(int indexX, int indexY) {
         imageViews[indexX][indexY].setBackgroundColor(Color.RED);
+        imageViews.[indexX][indexY].
+
     }
 
     private void initialView() {
