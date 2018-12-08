@@ -24,7 +24,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="fitXY"
-                    android:src="@drawable/cirle_yellow" />
+                    android:src="@drawable/s1" />
 
                 <!--Zone-->
                 <TextView
@@ -32,22 +32,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:text="Zone 11"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/h2"
-                    android:textStyle="bold" />
+                    android:textSize="12sp"
+                    android:textStyle="bold"/>
 
                 <!--Desk-->
                 <TextView
                     android:id="@+id/txtDesk"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="25dp"
                     android:text="11"
                     android:textColor="@color/colorBlack"
-                    android:textSize="@dimen/h1"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
+                <!--android:layout_centerInParent="true"-->
 
 
             </RelativeLayout>
@@ -95,7 +97,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/arrow64"
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="wrap_content" />
 
     </RelativeLayout>
