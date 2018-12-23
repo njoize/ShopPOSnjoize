@@ -1,6 +1,8 @@
 package njoize.dai_ka.com.demotestprint;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,13 +25,18 @@ import org.json.JSONObject;
 public class DeskFragment extends Fragment {
 
     //    Explicit
-    private ImageButton[][] imageViews = new ImageButton[5][10];
+    private TextView[][] imageViews = new TextView[10][10];
     private int[][] ints = new int[][]{
             {R.id.imv0_0, R.id.imv0_1, R.id.imv0_2, R.id.imv0_3, R.id.imv0_4, R.id.imv0_5, R.id.imv0_6, R.id.imv0_7, R.id.imv0_8, R.id.imv0_9},
             {R.id.imv1_0, R.id.imv1_1, R.id.imv1_2, R.id.imv1_3, R.id.imv1_4, R.id.imv1_5, R.id.imv1_6, R.id.imv1_7, R.id.imv1_8, R.id.imv1_9},
             {R.id.imv2_0, R.id.imv2_1, R.id.imv2_2, R.id.imv2_3, R.id.imv2_4, R.id.imv2_5, R.id.imv2_6, R.id.imv2_7, R.id.imv2_8, R.id.imv2_9},
             {R.id.imv3_0, R.id.imv3_1, R.id.imv3_2, R.id.imv3_3, R.id.imv3_4, R.id.imv3_5, R.id.imv3_6, R.id.imv3_7, R.id.imv3_8, R.id.imv3_9},
-            {R.id.imv4_0, R.id.imv4_1, R.id.imv4_2, R.id.imv4_3, R.id.imv4_4, R.id.imv4_5, R.id.imv4_6, R.id.imv4_7, R.id.imv4_8, R.id.imv4_9}
+            {R.id.imv4_0, R.id.imv4_1, R.id.imv4_2, R.id.imv4_3, R.id.imv4_4, R.id.imv4_5, R.id.imv4_6, R.id.imv4_7, R.id.imv4_8, R.id.imv4_9},
+            {R.id.imv5_0, R.id.imv5_1, R.id.imv5_2, R.id.imv5_3, R.id.imv5_4, R.id.imv5_5, R.id.imv5_6, R.id.imv5_7, R.id.imv5_8, R.id.imv5_9},
+            {R.id.imv6_0, R.id.imv6_1, R.id.imv6_2, R.id.imv6_3, R.id.imv6_4, R.id.imv6_5, R.id.imv6_6, R.id.imv6_7, R.id.imv6_8, R.id.imv6_9},
+            {R.id.imv7_0, R.id.imv7_1, R.id.imv7_2, R.id.imv7_3, R.id.imv7_4, R.id.imv7_5, R.id.imv7_6, R.id.imv7_7, R.id.imv7_8, R.id.imv7_9},
+            {R.id.imv8_0, R.id.imv8_1, R.id.imv8_2, R.id.imv8_3, R.id.imv8_4, R.id.imv8_5, R.id.imv8_6, R.id.imv8_7, R.id.imv8_8, R.id.imv8_9},
+            {R.id.imv9_0, R.id.imv9_1, R.id.imv9_2, R.id.imv9_3, R.id.imv9_4, R.id.imv9_5, R.id.imv9_6, R.id.imv9_7, R.id.imv9_8, R.id.imv9_9}
 
     };
 
@@ -57,6 +65,14 @@ public class DeskFragment extends Fragment {
         try {
 
             MyConstant myConstant = new MyConstant();
+
+            //joyce
+            SharedPreferences sharedPreferences = getActivity()
+                    .getSharedPreferences(myConstant.getSharePreferFile(), Context.MODE_PRIVATE);
+            String userLogined = sharedPreferences.getString("User", "");
+            Log.d("8decV2", "userLogined ==> " + userLogined);
+            //---
+
             GetAllData getAllData = new GetAllData(getActivity());
             getAllData.execute(myConstant.getUrlReadAllDesk());
             String jsonString = getAllData.get();
@@ -85,6 +101,7 @@ public class DeskFragment extends Fragment {
 
         String[] startStrings = startDesk.split("-");
         String[] endStrings = endDesk.split("-");
+        boolean b = true;
 
 
         int startX = Integer.parseInt(startStrings[0].trim());
@@ -96,7 +113,8 @@ public class DeskFragment extends Fragment {
 
             for (int i1 = startY; i1 <= endY; i1 += 1) {
 
-                addRed(i, i1);
+                addRed(i, i1, b);
+                b = false;
 
             } // for Y
 
@@ -104,9 +122,14 @@ public class DeskFragment extends Fragment {
 
     }
 
-    private void addRed(int indexX, int indexY) {
+    private void addRed(int indexX, int indexY, boolean b) {
         imageViews[indexX][indexY].setBackgroundColor(Color.RED);
-        imageViews.[indexX][indexY].
+
+        if (b) {
+            imageViews[indexX][indexY].setText("No.10");
+            imageViews[indexX][indexY].setTextColor(Color.WHITE);
+            imageViews[indexX][indexY].setTextSize(10);
+        }
 
     }
 

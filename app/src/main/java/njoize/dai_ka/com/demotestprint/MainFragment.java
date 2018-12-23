@@ -65,7 +65,7 @@ public class MainFragment extends Fragment {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
 
-            String tag = "24novV3";
+            String tag = "12DecV1";
             switch (msg.what) {
 
                 case WifiCommunication.WFPRINTER_CONNECTED:

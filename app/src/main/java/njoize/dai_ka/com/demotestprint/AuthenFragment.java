@@ -118,7 +118,7 @@ public class AuthenFragment extends Fragment {
 
 
 
-                                Intent intent = new Intent(getActivity(), ServiceActivity.class);
+                                Intent intent = new Intent(getActivity(), ServiceActivity.class); // go to ServiceActivity
                                 intent.putExtra("Login", resultJSoN);
                                 startActivity(intent);
                                 getActivity().finish();
