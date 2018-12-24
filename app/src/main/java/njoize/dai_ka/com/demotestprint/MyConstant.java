@@ -6,6 +6,8 @@ public class MyConstant {
     private int[] iconDrawerInts = new int[]{R.drawable.ic_action_one, R.drawable.ic_action_one, R.drawable.ic_action_exit};
     private String[] titleDrawerStrings = new String[]{"Menu1","Menu2","Sign Out"};
 
+    private String urlGetCategoryString = "http://www.brainwakecafe.com/android/getAllProductCat.php";
+
 
     private String[] detailStrings = new String[]{"idBill", "Time", "cnum", "type", "name", "Zone", "Desk"};
 
@@ -52,6 +54,10 @@ public class MyConstant {
 
 //    Getter
 
+
+    public String getUrlGetCategoryString() {
+        return urlGetCategoryString;
+    }
 
     public int[] getIconDrawerInts() {
         return iconDrawerInts;
