@@ -4,6 +4,7 @@ package njoize.dai_ka.com.demotestprint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -267,6 +268,11 @@ public class DeskFragment extends Fragment implements View.OnClickListener {
 
                     Log.d("24decV2", "Amount ==> " + amountCustomerString);
                     Log.d("24decV2", "TotalBill ==>" + totalBill);
+
+                    Intent intent = new Intent(getActivity(), FoodActivity.class);
+                    intent.putExtra("Amount", amountCustomerString);
+                    intent.putExtra("Bill", totalBill);
+                    startActivity(intent);
 
                 }
 
