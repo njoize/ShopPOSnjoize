@@ -252,20 +252,20 @@ public class BillDetailFragment extends Fragment {
 
 
 
-                                wifiCommunication.sndByte(openCashDrawer);
-
-//                                wifiCommunication.sndByte(top);
-                                wifiCommunication.sndByte(dbold);
-                                wifiCommunication.sndByte(centered);
-                                wifiCommunication.sendMsg("Brainwake", "tis-620");
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("Matichon Academy", "tis-620");
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("02 003 4511", "tis-620");
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sndByte(dfont);
-                                wifiCommunication.sendMsg("-------------------------", "tis-620");
-                                wifiCommunication.sndByte(lineup);
+//                                wifiCommunication.sndByte(openCashDrawer);
+//
+////                                wifiCommunication.sndByte(top);
+//                                wifiCommunication.sndByte(dbold);
+//                                wifiCommunication.sndByte(centered);
+//                                wifiCommunication.sendMsg("Brainwake", "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//                                wifiCommunication.sendMsg("Matichon Academy", "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//                                wifiCommunication.sendMsg("02 003 4511", "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//                                wifiCommunication.sndByte(dfont);
+//                                wifiCommunication.sendMsg("-------------------------", "tis-620");
+//                                wifiCommunication.sndByte(lineup);
 
 //                                wifiCommunication.sndByte(lineup);
 //                                wifiCommunication.sendMsg("   REG  01", "tis-620");
@@ -302,8 +302,8 @@ public class BillDetailFragment extends Fragment {
                                 for (int i = 0; i < nameStringArrayList.size(); i += 1) {
 
                                     wifiCommunication.sndByte(left);
-                                    wifiCommunication.sendMsg(Integer.toString(i + 1) + " x ", "tis-620");
-//                                    wifiCommunication.sendMsg("   " + shortFood(numStringArrayList.get(i)) + " x ", "tis-620");
+//                                    wifiCommunication.sendMsg(Integer.toString(i + 1) + " x ", "tis-620");
+                                    wifiCommunication.sendMsg(numStringArrayList.get(i) + " x ", "tis-620");
                                     wifiCommunication.sndByte(tab);
 
                                     wifiCommunication.sendMsg(shortFood(nameStringArrayList.get(i)), "tis-620");
@@ -316,6 +316,7 @@ public class BillDetailFragment extends Fragment {
                                     wifiCommunication.sendMsg(rightWord(priceStringArrayList.get(i)), "tis-620");
                                     wifiCommunication.sndByte(lineup);
 
+
                                 }
 
                                 wifiCommunication.sndByte(lineup);
@@ -323,10 +324,13 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
                                 wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
 
                                 wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sendMsg("   Discount", "tis-620");
+                                wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
@@ -345,6 +349,7 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
                                 wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
 
                                 wifiCommunication.sndByte(lineup);
@@ -352,10 +357,14 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
                                 wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
 
                                 wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sendMsg("   Change", "tis-620");
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
@@ -441,8 +450,8 @@ public class BillDetailFragment extends Fragment {
 
         String result = foodString;
 
-        if (result.length() <= 28) {
-            result = result.substring(0, 25) + "...";
+        if (result.length() <= 20) {
+            result = result.substring(0, 17) + "...";
         }
 
         return result;
