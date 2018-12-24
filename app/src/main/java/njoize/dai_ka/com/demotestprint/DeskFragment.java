@@ -12,7 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -55,25 +55,19 @@ public class DeskFragment extends Fragment {
 
 //      Draw Desk
         drawDesk();
-//        textViews[9][0].setText("Test" + "\n" + "Test2");
-//        textViews[9][0].setWidth(1);
 
-//        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) textViews[9][0].getLayoutParams();
-//        layoutParams.width = 300;
-//        textViews[9][0].setLayoutParams(layoutParams);
-//        Test
-
-        buildTextView(textViews[6][2], 2, "4 CT", "14:45", "7");
-        buildTextView(textViews[7][2], 1, "4 CT", "14:45", "7");
+        buildDesk(textViews[5][1], 2,"3 CT","10:20","5");
+        buildDesk(textViews[4][1], 2,"3 CT","10:20","4");
+        buildDesk(textViews[5][2], 1,"3 CT","10:20","6");
 
 
     } // Main Method
 
-    private void buildTextView(TextView textView, int deskFactor, String cnum, String time, String desk){
+    private void buildDesk(TextView textView, int deskFactor, String cnum, String time, String desk){
         // the following change is what fixed it
-        TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT,2.0f);
+        TableRow.LayoutParams paramsExample = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,2.0f);
 
-        int factor = 30 * deskFactor;
+        int factor = 10 * deskFactor;
         int factor2 = 2;
 
         textView.setBackgroundColor(Color.RED);
@@ -112,9 +106,19 @@ public class DeskFragment extends Fragment {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String startDesk = jsonObject.getString("tbstart");
                 String endDesk = jsonObject.getString("tbend");
+                String tname = jsonObject.getString("tname");
                 Log.d(tag, "startDesk ==> " + startDesk);
                 Log.d(tag, "endDesk ==> " + endDesk);
-                convasDesk(startDesk, endDesk);
+//                convasDesk(startDesk, endDesk);
+
+                int indexStartPre = findIndexPreAndSub(startDesk, true);
+                int indexStartSub = findIndexPreAndSub(startDesk, false);
+
+                int indexEndPre = findIndexPreAndSub(endDesk, true);
+                int deskFactor = indexEndPre - indexStartPre + 1;
+
+                buildDesk(textViews[indexStartPre][indexStartSub],deskFactor, "5 CT",
+                        "12:30", tname);
 
             } // for
 
@@ -122,6 +126,19 @@ public class DeskFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private int findIndexPreAndSub(String deskString, boolean aBoolean) {
+
+        String[] strings = deskString.split("-");
+        int result = 0;
+        if (aBoolean) {
+            result = Integer.parseInt(strings[0]);
+        } else {
+            result = Integer.parseInt(strings[1]);
+        }
+
+        return result;
     }
 
 
