@@ -240,7 +240,7 @@ public class BillDetailFragment extends Fragment {
                                 byte[] right = new byte[]{0x1B, 0x61, 2}; // right
                                 byte[] tab = new byte[]{27, 101, 0, 9}; // tab
                                 byte[] dfont = new byte[]{0x1B, 0x21, 0x00}; // default font
-                                byte[] bold = new byte[]{0x1B, 0x21, 0x02}; // default font
+                                byte[] bold = new byte[]{0x1B, 0x45, 0x01}; // bold
                                 byte[] dbold = new byte[3]; // Set the font (double height and width bold)
                                 dbold[0] = 0x1B;
                                 dbold[1] = 0x21;
@@ -252,44 +252,44 @@ public class BillDetailFragment extends Fragment {
 
 
 
-//                                wifiCommunication.sndByte(openCashDrawer);
-//
-////                                wifiCommunication.sndByte(top);
-//                                wifiCommunication.sndByte(dbold);
-//                                wifiCommunication.sndByte(centered);
-//                                wifiCommunication.sendMsg("Brainwake", "tis-620");
-//                                wifiCommunication.sndByte(lineup);
-//                                wifiCommunication.sendMsg("Matichon Academy", "tis-620");
-//                                wifiCommunication.sndByte(lineup);
-//                                wifiCommunication.sendMsg("02 003 4511", "tis-620");
-//                                wifiCommunication.sndByte(lineup);
-//                                wifiCommunication.sndByte(dfont);
-//                                wifiCommunication.sendMsg("-------------------------", "tis-620");
-//                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sndByte(openCashDrawer);
 
-//                                wifiCommunication.sndByte(lineup);
-//                                wifiCommunication.sendMsg("   REG  01", "tis-620");
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sendMsg(rightLongWord(nameString), "tis-620");
-//                                wifiCommunication.sndByte(lineup);
-//
-//                                wifiCommunication.sendMsg("   " + "Date", "tis-620");
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sendMsg(rightWord(timeString), "tis-620");
-//                                wifiCommunication.sndByte(lineup);
-//
-//                                wifiCommunication.sendMsg("   Table No. " + deskString + "  Zone. " + zoneString , "tis-620");
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sndByte(tab);
-//                                wifiCommunication.sendMsg(rightWord(cnumString), "tis-620");
+//                                wifiCommunication.sndByte(top);
+                                wifiCommunication.sndByte(dbold);
+                                wifiCommunication.sndByte(centered);
+                                wifiCommunication.sendMsg("Brainwake", "tis-620");
+                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sendMsg("Matichon Academy", "tis-620");
+                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sendMsg("02 003 4511", "tis-620");
+                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sndByte(dfont);
+                                wifiCommunication.sendMsg("-------------------------", "tis-620");
+                                wifiCommunication.sndByte(lineup);
+
+                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sendMsg("   REG  01", "tis-620");
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sendMsg(rightLongWord(nameString + "  "), "tis-620");
+                                wifiCommunication.sndByte(lineup);
+
+                                wifiCommunication.sendMsg("   " + "24/12/2018", "tis-620");
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sendMsg(rightLongWord(timeString + "  "), "tis-620");
+                                wifiCommunication.sndByte(lineup);
+
+                                wifiCommunication.sendMsg("  Table No. " + deskString + "  " + zoneString , "tis-620");
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sendMsg(rightWord(cnumString+"CT "), "tis-620");
 //                                wifiCommunication.sendMsg("CT", "tis-620");
-//                                wifiCommunication.sndByte(lineup);
-//                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sndByte(lineup);
 
 //                                Work Here
 
@@ -303,7 +303,7 @@ public class BillDetailFragment extends Fragment {
 
                                     wifiCommunication.sndByte(left);
 //                                    wifiCommunication.sendMsg(Integer.toString(i + 1) + " x ", "tis-620");
-                                    wifiCommunication.sendMsg(numStringArrayList.get(i) + " x ", "tis-620");
+                                    wifiCommunication.sendMsg("   " + numStringArrayList.get(i) + " x ", "tis-620");
                                     wifiCommunication.sndByte(tab);
 
                                     wifiCommunication.sendMsg(shortFood(nameStringArrayList.get(i)), "tis-620");
@@ -320,8 +320,7 @@ public class BillDetailFragment extends Fragment {
                                 }
 
                                 wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("   TOTAL", "tis-620");
-                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sendMsg("   SUB TOTAL", "tis-620");
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
@@ -337,6 +336,14 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
 
                                 wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sendMsg("   Vat 7%", "tis-620");
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
+
+                                wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sendMsg("   Service Charge 10%", "tis-620");
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
@@ -345,14 +352,19 @@ public class BillDetailFragment extends Fragment {
 
 
                                 wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("   Net Total", "tis-620");
+                                wifiCommunication.sndByte(bold);
+                                wifiCommunication.sendMsg("   ", "tis-620");
+                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(bold);
+                                wifiCommunication.sendMsg("TOTAL", "tis-620");
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
+                                wifiCommunication.sndByte(dbold);
                                 wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
 
                                 wifiCommunication.sndByte(lineup);
+                                wifiCommunication.sndByte(dfont);
                                 wifiCommunication.sendMsg("   CASH", "tis-620");
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
@@ -367,12 +379,11 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
                                 wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
                                 wifiCommunication.sendMsg(rightWord(Integer.toString(total)), "tis-620");
 
                                 wifiCommunication.sndByte(lineup);
                                 wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sndByte(bold);
+                                wifiCommunication.sndByte(dbold);
                                 wifiCommunication.sndByte(centered);
                                 wifiCommunication.sendMsg("THANK YOU", "tis-620");
                                 wifiCommunication.sndByte(lineup);
@@ -450,8 +461,19 @@ public class BillDetailFragment extends Fragment {
 
         String result = foodString;
 
-        if (result.length() <= 20) {
-            result = result.substring(0, 17) + "...";
+        if (result.length() >= 23) {
+            result = result.substring(0, 20) + "...";
+        } else {
+
+            int currentWord = result.length();
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < (23 - currentWord); i += 1) {
+                stringBuilder.append(" ");
+            }
+
+
+            result = result + stringBuilder.toString();
+
         }
 
         return result;
