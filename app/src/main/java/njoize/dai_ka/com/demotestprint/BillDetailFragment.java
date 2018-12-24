@@ -267,24 +267,29 @@ public class BillDetailFragment extends Fragment {
                                 wifiCommunication.sendMsg("-------------------------", "tis-620");
                                 wifiCommunication.sndByte(lineup);
 
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("   REG  01", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg(rightLongWord(nameString), "tis-620");
-
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("   " + "Date", "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg(rightWord(timeString), "tis-620");
-                                wifiCommunication.sndByte(lineup);
-                                wifiCommunication.sendMsg("   Table No. " + deskString + "  Zone. " + zoneString , "tis-620");
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sndByte(tab);
-                                wifiCommunication.sendMsg(rightWord(cnumString) + "CT", "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//                                wifiCommunication.sendMsg("   REG  01", "tis-620");
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sendMsg(rightLongWord(nameString), "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//
+//                                wifiCommunication.sendMsg("   " + "Date", "tis-620");
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sendMsg(rightWord(timeString), "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//
+//                                wifiCommunication.sendMsg("   Table No. " + deskString + "  Zone. " + zoneString , "tis-620");
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sndByte(tab);
+//                                wifiCommunication.sendMsg(rightWord(cnumString), "tis-620");
+//                                wifiCommunication.sendMsg("CT", "tis-620");
+//                                wifiCommunication.sndByte(lineup);
+//                                wifiCommunication.sndByte(lineup);
 
 //                                Work Here
 
@@ -297,7 +302,8 @@ public class BillDetailFragment extends Fragment {
                                 for (int i = 0; i < nameStringArrayList.size(); i += 1) {
 
                                     wifiCommunication.sndByte(left);
-                                    wifiCommunication.sendMsg("   " + numStringArrayList.get(i) + " x ", "tis-620");
+                                    wifiCommunication.sendMsg(Integer.toString(i + 1) + " x ", "tis-620");
+//                                    wifiCommunication.sendMsg("   " + shortFood(numStringArrayList.get(i)) + " x ", "tis-620");
                                     wifiCommunication.sndByte(tab);
 
                                     wifiCommunication.sendMsg(shortFood(nameStringArrayList.get(i)), "tis-620");
