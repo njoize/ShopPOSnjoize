@@ -31,7 +31,11 @@ import java.util.ArrayList;
 public class BillDetailFragment extends Fragment {
 
     //    Explicit
-    private WifiCommunication wifiCommunication;
+//    private WifiCommunication wifiCommunication;
+    private WifiCommunication wifiCommunication = null;
+    revMsgThread revThred = null;
+    private static final int WFPRINTER_REVMSG = 0x06;
+
     private boolean aBoolean = false;
     private boolean communicationABoolean = true; // true ==> Can Print, false ==> Disable Print
     private Button button, printAgainButton;
@@ -404,6 +408,10 @@ public class BillDetailFragment extends Fragment {
                         } // onClick
                     });
 
+
+                    revThred = new revMsgThread();
+                    revThred.start();
+
                     break;
                 case WifiCommunication.WFPRINTER_DISCONNECTED:
                     Log.d(tag, "Disconnected Printer");
@@ -479,6 +487,36 @@ public class BillDetailFragment extends Fragment {
         return result;
     }
 
+
+    class revMsgThread extends Thread {
+        @Override
+        public void run() {
+            try {
+                Message msg = new Message();
+                int revData;
+                while(true)
+                {
+                    revData = wifiCommunication.revByte();               //�����������ֽڽ������ݣ�����ĳɷ����������ַ�����ο��ֲ�
+                    if(revData != -1){
+
+                        msg = handler.obtainMessage(WFPRINTER_REVMSG);
+                        msg.obj = revData;
+                        handler.sendMessage(msg);
+                    }
+                    Thread.sleep(20);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                Log.d("wifi����","�˳��߳�");
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        wifiCommunication.close();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

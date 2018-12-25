@@ -7,6 +7,7 @@ public class MyConstant {
     private String[] titleDrawerStrings = new String[]{"Menu1","Menu2","Sign Out"};
 
     private String urlGetCategoryString = "http://www.brainwakecafe.com/android/getAllProductCat.php";
+    private String urlGetFoodWhereIdAndUser = "http://www.brainwakecafe.com/android/getAllProduct.php";
 
 
     private String[] detailStrings = new String[]{"idBill", "Time", "cnum", "type", "name", "Zone", "Desk"};
@@ -54,6 +55,10 @@ public class MyConstant {
 
 //    Getter
 
+
+    public String getUrlGetFoodWhereIdAndUser() {
+        return urlGetFoodWhereIdAndUser;
+    }
 
     public String getUrlGetCategoryString() {
         return urlGetCategoryString;
